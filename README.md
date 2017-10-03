@@ -3,7 +3,7 @@
 ## Project Requirements
 This Web Application aims at displaying a **live map** of all the Buses, Trolley Buses and Trams operated by the *Public Transport System of Timisoara*.
 Some of the features included will be:
-+ An *interactve map( of the city of Timisoara and the surrounding region
++ An *interactve map* of the city of Timisoara and the surrounding region
 + An overview of all the vehicles and their location on the dynamic map
 + The possibility of selecting a particular track in order to check its planned route, schedule and actual location
 
