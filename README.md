@@ -38,7 +38,7 @@ The webpage seems to select the route to be displayed based on the PHP variable 
 
 We might write a small script to iterate through all possible 4 digit numbers and retrieve the pairing of the Line Name and the number in order to start building the data structures necessary to our application.
 
-When a **invalid** number is passed through *param1*, the following webpage is returned:
+When an **invalid** number is passed through *param1*, the following webpage is returned:
 ```html
 <table bgcolor=0048A1 style='color:white;' border='0'><tr>
 <td align=center><b>Linia NU CIRCULĂ AZI! spre </b></td></tr>
