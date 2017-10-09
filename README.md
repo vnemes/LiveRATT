@@ -150,3 +150,5 @@ Using a small [python script](https://github.com/vnemes/LiveRATT/blob/master/scr
 | 1286   |  Tv9         | 
 </details>
 
+Added a node.js server that responds with an html page on any connection attempt.
+The page contains our current implementation of the Google Maps API.
