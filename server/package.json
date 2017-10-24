@@ -1,13 +1,15 @@
 {
-  "name": "chat-example",
+  "name": "live-ratt",
   "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
+  "description": "This Web Application aims at displaying a live map of all the Buses, Trolley Buses and Trams operated by the Public Transport System of Timisoara",
   "main": "server.js",
-  "repository": "",
-  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "repository": "https://github.com/vnemes/LiveRATT",
+  "author": "Remus-Renato Jeberean & Vlad Rosculescu-Nemes",
   "dependencies": {
     "async": "~0.2.8",
+    "cheerio": "^1.0.0-rc.2",
     "express": "~3.2.4",
+    "request": "^2.83.0",
     "socket.io": "~0.9.14"
   }
 }
