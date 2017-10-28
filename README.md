@@ -150,12 +150,19 @@ Using a small [python script](https://github.com/vnemes/LiveRATT/blob/master/scr
 | 1286   |  Tv9         | 
 </details> <br />
 
+### Week 3
+
 Added a node.js server that responds with an html page on any connection attempt.<br />
 The page contains our current implementation of the Google Maps API.
-
 <details>
   <summary>Current Map Progres</summary>
    <p align="center">
     <img src="https://i.imgur.com/0uyZc4Y.png" width="100%"/>  
    </p>
 </details>
+
+### Week 4 & 5
+
+(BackEnd)Finished the node.js module responsible with scraping the RATT website, returning a json of the routes (inbound & outbound) with every station and the predicted arrival time. Possible enhancements could be done to standardize the time format (currently HH:MM or xmin or >>> signaling the bus being in the station).
+
+(FrontEnd)A sidebar was added for selecting the routes to be displayed on the map. 
