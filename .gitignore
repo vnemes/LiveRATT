@@ -62,3 +62,6 @@ typings/
 
 # Cloud9 project directory
 **/.c9
+
+# Firebase Private key
+**FirebasePrivateKey.json
