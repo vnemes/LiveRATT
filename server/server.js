@@ -19,3 +19,6 @@ app.listen(config.APP_PORT, function(){
 scrapper.getBusSchedule(1556, function(out){ // debug
     console.log(JSON.stringify(out, null, 4)); // debug output
 });
+
+var firebase = require('./firebaseDB');
+firebase.test;
