@@ -2,31 +2,64 @@ const config = require('./config/config.js');
 var request = require('request');
 var cheerio = require('cheerio');
 
-module.exports.getBusSchedule = function(id) {
+function Station(name, time) {
+    this.name = name;
+    this.time = time;
+}
 
-    url = config.RATT_ROUTE_URL + id;
+function Route(name) {
+    this.routeName = name;
+    this.stationsArr = [];
+}
 
-    request(url, function(error, response, html) {
-        if (!error){
-            var $ = cheerio.load(html);
-            var routes = [];
-            var stationName, stationTime;
-            var cnt = -1;
-            $('table').each(function(i, elem) {
-                if ($(this).css("color") === "white"){
-                    //routes.push({routename : $(this).children().children().text()});
-                    routes.push($(this).text());
-                    cnt++;
-                } else {
-                   // routes[cnt].push
-                    // add to routes the station and est. time of arrival.
-                }
+function addStation(route, station) {
+    route.stationsArr.push(station);
+}
 
 
+function Routes(param1, firstRoute, secondRoute) {
+    this.id = param1;
+    this.firstRoute = firstRoute;
+    this.secondRoute = secondRoute;
+}
+
+module.exports.getBusSchedule = function (id, callback) {
+
+    var url = config.RATT_ROUTE_URL + id;
+
+    request(url, function (error, response, html) {
+        if (!error) {
+            var $ = cheerio.load(html, {
+                normalizeWhitespace: true
             });
-
-             console.log('routes: ' + routes.toString());
-
+            var firstRoute, secondRoute;
+            var first = false;
+            var skipDescription;
+            $('table').each(function (i, elem) {
+                if ($(this).css("color") === "white") {
+                    skipDescription = true;
+                    first = !first;
+                    if (first)
+                        firstRoute = new Route($(this).text().trim());
+                    else
+                        secondRoute = new Route($(this).text().trim());
+                } else {
+                    // add to routes the station and est. time of arrival.
+                    if (skipDescription) {
+                        skipDescription = false;
+                        return 'continue'; // Trick to skip current iteration
+                    }
+                    var tmpQuery = $('tr td', this);
+                    var tmpStation = new Station(tmpQuery.eq(0).text().trim(), tmpQuery.eq(1).text().trim());
+                    addStation(first ? firstRoute : secondRoute, tmpStation);
+                    //console.log(tmpStation.name, ' ', tmpStation.time); // debug
+                }
+            });
+            //console.log(JSON.stringify(new Routes(id, firstRoute, secondRoute), null, 4)); // debug
+            var ret = new Routes(id, firstRoute, secondRoute);
+            callback(ret);
+        } else {
+            console.error(error);
         }
     })
 };

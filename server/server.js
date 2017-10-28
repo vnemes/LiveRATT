@@ -13,7 +13,9 @@ app.listen(config.APP_PORT, function(){
         //res.sendfile(__dirname + '/client/forohfour.html');
         //TODO create 404 html page
         res.send('Four oh four..');
-        console.log('Invalid connection');
+        console.error('Invalid connection');
     })
 });
-scrapper.getBusSchedule(1556); // debug
+scrapper.getBusSchedule(1556, function(out){ // debug
+    console.log(JSON.stringify(out, null, 4)); // debug output
+});
