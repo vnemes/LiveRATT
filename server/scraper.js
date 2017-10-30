@@ -17,15 +17,14 @@ function addStation(route, station) {
 }
 
 
-function Routes(param1, firstRoute, secondRoute) {
-    this.id = param1;
-    this.firstRoute = firstRoute;
-    this.secondRoute = secondRoute;
+function Routes(firstRoute, secondRoute) {
+    this.inbound = firstRoute;
+    this.outbound = secondRoute;
 }
 
-module.exports.getBusSchedule = function (id, callback) {
+module.exports.getBusSchedule = function (param1, callback) {
 
-    var url = config.RATT_ROUTE_URL + id;
+    var url = config.RATT_ROUTE_URL + param1;
 
     request(url, function (error, response, html) {
         if (!error) {
@@ -36,7 +35,7 @@ module.exports.getBusSchedule = function (id, callback) {
             var first = false;
             var skipDescription;
             $('table').each(function (i, elem) {
-                if ($(this).css("color") === "white") {
+                if ($(this).text().trim().indexOf('Linia ') > -1) {
                     skipDescription = true;
                     first = !first;
                     if (first)
@@ -44,6 +43,10 @@ module.exports.getBusSchedule = function (id, callback) {
                     else
                         secondRoute = new Route($(this).text().trim());
                 } else {
+                    if (!firstRoute && !secondRoute) {
+                        console.log('the wrong one is:',param1);
+                        return 'continue';
+                    }
                     // add to routes the station and est. time of arrival.
                     if (skipDescription) {
                         skipDescription = false;
@@ -55,8 +58,8 @@ module.exports.getBusSchedule = function (id, callback) {
                     //console.log(tmpStation.name, ' ', tmpStation.time); // debug
                 }
             });
-            //console.log(JSON.stringify(new Routes(id, firstRoute, secondRoute), null, 4)); // debug
-            var ret = new Routes(id, firstRoute, secondRoute);
+            //console.log(JSON.stringify(new Routes(inbound, outbound), null, 4)); // debug
+            var ret = new Routes(firstRoute, secondRoute);
             callback(ret);
         } else {
             console.error(error);

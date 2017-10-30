@@ -7,6 +7,7 @@
   "author": "Remus-Renato Jeberean & Vlad Rosculescu-Nemes",
   "dependencies": {
     "async": "~0.2.8",
+    "async-polling": "^0.2.1",
     "cheerio": "^1.0.0-rc.2",
     "express": "~3.2.4",
     "firebase": "^4.6.0",
