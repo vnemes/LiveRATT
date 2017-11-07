@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <style>
+       #googleMap {
+        height: 100%;
+        width: 100%;
+    margin: 0px;
+    padding: 0px
+       }
+    </style>
+  </head>
+  <body>    <div id="mapBounds"></div>
+<div id="googleMap" style="border: 2px solid #3872ac;"></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6YwjjAuOE3rDQD_r_m7sqH2juMvX3UlY">
+	var map;
+var bounds;
+
+function initialize() {
+    map = new google.maps.Map(document.getElementById("googleMap"), {
+        zoom: 12,
+        center: new google.maps.LatLng(40.779502, -73.967857)
+    });
+
+    google.maps.event.addListener(map, 'bounds_changed', function () {
+        bounds = map.getBounds();
+        ne = bounds.getNorthEast();
+        sw = bounds.getSouthWest();
+        document.getElementById('mapBounds').innerHTML = bounds.toUrlValue(6);
+        TestMarker();
+
+    });
+}
+
+function addMarker(location) {
+    marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+}
+
+// Testing the addMarker function
+function TestMarker() {
+    CentralPark = new google.maps.LatLng(40.779502, -73.967857);
+    addMarker(CentralPark);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </body>
+</html>
