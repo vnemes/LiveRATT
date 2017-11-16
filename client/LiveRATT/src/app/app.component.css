@@ -1,0 +1,15 @@
+header {
+  padding: 154px 0 100px;
+  background-color: #46084a;
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 156px 0 100px;
+    background-color: #46084a;
+  }
+}
+
+section {
+  padding: 50px 0;
+}

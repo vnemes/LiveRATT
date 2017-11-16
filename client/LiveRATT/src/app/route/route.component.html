@@ -1,0 +1,5 @@
+<ul class="list-group">
+  <li *ngFor="let item of items | async" class="list-group-item">
+    {{ item.inbound.routeName }}
+  </li>
+</ul>
