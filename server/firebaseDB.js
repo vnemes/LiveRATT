@@ -50,7 +50,7 @@ exports.updateRouteEncoding = function () {
 
 // Receive the encoding from the firebase Database
 exports.getRouteEncoding = function (signalDataReady) {
-    ref = db.ref("routes/encoding");
+    ref = db.ref("encoding");
     ref.on("value", function (snapshot) {
         //console.log(snapshot.val()); // debug
         exports.routeEncodings = snapshot.val();
