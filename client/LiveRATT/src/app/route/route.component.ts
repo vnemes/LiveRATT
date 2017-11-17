@@ -12,7 +12,7 @@ export class RouteComponent {
   items: Observable<RouteContainer[]>;
 
   constructor(db: AngularFireDatabase) {
-    this.items = db.list('routes/').valueChanges();
+    this.items = db.list('routes/').valueChanges(); // smth
   }
 
 }
