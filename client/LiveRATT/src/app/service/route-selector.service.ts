@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from "angularfire2/database";
-import {Selector} from "../selector";
+import {Selector} from "../selector/selector";
 import {Observable} from "rxjs/Observable";
-import {RouteContainer} from "../routecontainer";
+import {RouteContainer} from "../route/routecontainer";
 
 @Injectable()
 export class RouteSelectorService {

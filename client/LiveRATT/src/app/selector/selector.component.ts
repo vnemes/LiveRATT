@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs/Observable";
-import {Selector} from "../selector";
+import {Selector} from "./selector";
 import {RouteSelectorService} from "../service/route-selector.service";
-import {RouteContainer} from "../routecontainer";
+import {RouteContainer} from "../route/routecontainer";
 
 @Component({
   selector: 'app-selector',

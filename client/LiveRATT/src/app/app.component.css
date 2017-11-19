@@ -13,3 +13,6 @@ header {
 section {
   padding: 20px 0;
 }
+#content {
+  min-height: 900px;
+}
