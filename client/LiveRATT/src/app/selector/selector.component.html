@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-4">
+
+    <!--Selector title-->
+    <div class="jumbotron">
+      <h1 class="display-3">Routes</h1>
+      <p class="lead">Choose the route to display:</p>
+      <hr class="my-4">
+
+      <!--Until valid data was received, display placeholder-->
+      <div *ngIf="selectorArr | async; let selectorArr; else loadingSelection">
+      <p class="lead">
+        <!--Display a selector with each category as a tab-->
+        <ngb-tabset orientation="horizontal" justify="fill">
+          <ngb-tab class="ngbTab" *ngFor="let selector of selectorArr" >
+            <ng-template ngbTabTitle> <div id="tabHeader">{{selector.type}}</div></ng-template>
+
+            <!--Display the routes as buttons-->
+            <ng-template ngbTabContent>
+                <br>
+              <!--TODO remove inline CSS-->
+                <button *ngFor="let id of selector.routes" type="button" class="btn btn-dark" style="background: #5a1262;"
+                        (click)="updateCurrentSelection(id)">{{id}}
+                </button>
+            </ng-template>
+          </ngb-tab>
+       </ngb-tabset>
+      </p>
+      </div>
+      <!--TODO remove inline CSS-->
+      <ng-template #loadingSelection> <div class="alert alert-dark text-white text-center" role="alert" style="background-color:#a585a7;" >Loading available routes.. </div></ng-template>
+    </div>
+  </div>
+
+  <!--Display the route in one direction-->
+  <div class="col-lg-4">
+    <app-route
+      [selectedRouteChild]='selectedRouteMaster' direction="inbound"></app-route>
+  </div>
+  <!--Display the route in the other direction-->
+  <div class="col-lg-4">
+    <app-route
+      [selectedRouteChild]='selectedRouteMaster' direction="outbound"></app-route>
+  </div>
+</div>
+
+
+

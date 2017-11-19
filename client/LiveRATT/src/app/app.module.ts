@@ -7,21 +7,27 @@ import { AppComponent } from './app.component';
 import {environment} from "../environments/environment";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouteComponent } from './route/route.component';
+import { SelectorComponent } from './selector/selector.component';
+import { FormsModule } from '@angular/forms';
+import {RouteSelectorService} from "./service/route-selector.service";
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RouteComponent
+    RouteComponent,
+    SelectorComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FormsModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [RouteSelectorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

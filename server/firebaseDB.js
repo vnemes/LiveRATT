@@ -16,7 +16,7 @@ admin.initializeApp({
 // As an admin, the app has access to read and write all data, regardless of Security Rules
 var db = admin.database();
 
-// Upload the route with id <routeID> to the firebase database
+// Upload the route with currentSelectionChild <routeID> to the firebase database
 exports.updateRouteSchedule = function (routeID, route) {
     ref = db.ref("routes/" + routeID);
     ref.update(route);

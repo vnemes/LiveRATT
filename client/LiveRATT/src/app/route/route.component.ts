@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {AngularFireDatabase} from "angularfire2/database";
+import {Component, Input} from '@angular/core';
 import {RouteContainer} from "../routecontainer";
 
 @Component({
@@ -9,10 +7,9 @@ import {RouteContainer} from "../routecontainer";
   styleUrls: ['./route.component.css']
 })
 export class RouteComponent {
-  items: Observable<RouteContainer[]>;
-
-  constructor(db: AngularFireDatabase) {
-    this.items = db.list('routes/').valueChanges(); // smth
+  @Input() private selectedRouteChild:RouteContainer;
+  @Input() private direction:String;
+  constructor() {
   }
 
 }
