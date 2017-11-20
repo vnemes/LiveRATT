@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RouteContainer} from "./routecontainer";
+import {Route} from "./route";
 
 @Component({
   selector: 'app-route',
@@ -9,7 +10,14 @@ import {RouteContainer} from "./routecontainer";
 export class RouteComponent {
   @Input() private selectedRouteChild:RouteContainer;
   @Input() private direction:String;
+
   constructor() {
   }
+
+  getRouteByDirection():Route{
+    console.log(this.selectedRouteChild);
+    return this.direction == "inbound" ? this.selectedRouteChild.inbound : this.selectedRouteChild.outbound;
+  }
+
 
 }

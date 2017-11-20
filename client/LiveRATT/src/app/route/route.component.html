@@ -1,36 +1,22 @@
-  <div *ngIf="selectedRouteChild; else loading">
-    <!--Display inbound routes-->
-    <div *ngIf="direction == 'inbound'; else outbound">
-      <!--Display route name-->
-      <div class="alert alert-secondary" role="alert"><b>
-        {{ selectedRouteChild.inbound.routeName}}</b>
-      </div>
-      <ul class="list-group">
-        <!--Display each station with its schedule-->
-        <li class="list-group-item d-flex justify-content-between align-items-center"  *ngFor="let station of selectedRouteChild.inbound.stationsArr">
-          {{ station.name }}
-          <!--TODO remove inline CSS-->
-          <span class="badge badge-dark" style="background: #5a1262;">{{station.time }}</span>
-        </li>
-      </ul>
-    </div>
-
-    <!--Display outbound routes-->
-    <ng-template #outbound>
-      <!--Display route name-->
-      <div class="alert alert-secondary" role="alert"><b>
-        {{ selectedRouteChild.outbound.routeName}}</b>
-      </div>
-      <ul class="list-group">
-        <!--Display each station with its schedule-->
-        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let station of selectedRouteChild.outbound.stationsArr">
-          {{ station.name }}
-          <!--TODO remove inline CSS-->
-          <span class="badge badge-dark" style="background: #5a1262;">{{station.time }}</span>
-        </li>
-      </ul>
-    </ng-template>
-
+<div *ngIf="selectedRouteChild; else loading">
+  <!--Display route name-->
+  <div class="alert alert-secondary" role="alert"><b>
+    {{ getRouteByDirection().routeName }}</b>
+    <!--TODO Use method in class Route to retrieve routeName and stations depending on direction-->
   </div>
-  <!--TODO remove inline CSS-->
-  <ng-template #loading> <div class="alert alert-info text-white text-center" role="alert" style="background-color:#a585a7;">Selected route is loading.. </div></ng-template>
+  <ul class="list-group">
+    <!--Display each station with its schedule-->
+    <li class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let station of getRouteByDirection().stationsArr">
+      {{ station.name }}
+      <!--TODO remove inline CSS-->
+      <span class="badge badge-dark" style="background: #5a1262;">{{station.time }}</span>
+    </li>
+  </ul>
+</div>
+<!--TODO remove inline CSS-->
+<ng-template #loading>
+  <div class="alert alert-info text-white text-center" role="alert" style="background-color:#a585a7;">Selected route is
+    loading..
+  </div>
+</ng-template>
