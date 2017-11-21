@@ -10,8 +10,8 @@ import {RouteContainer} from "../route/routecontainer";
   styleUrls: ['./selector.component.css']
 })
 export class SelectorComponent implements OnInit {
-  private selectedRouteMaster:RouteContainer;
-  private selectorArr: Observable<Selector[]>;
+  selectedRouteMaster:RouteContainer;
+  selectorArr: Observable<Selector[]>;
   constructor(private routeSelServ: RouteSelectorService) {
   }
 

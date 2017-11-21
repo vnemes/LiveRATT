@@ -8,7 +8,7 @@ import {Route} from "./route";
   styleUrls: ['./route.component.css']
 })
 export class RouteComponent {
-  @Input() private selectedRouteChild:RouteContainer;
+  @Input()  selectedRouteChild:RouteContainer;
   @Input() private direction:String;
 
   constructor() {
