@@ -4,15 +4,15 @@
 This Web Application aims at displaying a **live map** of all the Buses, Trolley Buses and Trams operated by the *Public Transport System of Timisoara*.
 Some of the features included will be:
 + An *interactve map* of the city of Timisoara and the surrounding region (**Done** in release *v1.0*)
-+ An overview of all the vehicles and their location on the dynamic map
++ An overview of all the vehicles and their location on the dynamic map (*Work in progress*)
 + The possibility of selecting a particular track in order to check its planned route, schedule and actual location -> (**Done** in release *v1.0*)
 
 ## Current Progress
 
 ### Week 7 & 8
 
-Created an Angular5 application that allows the user to select a route to be displayed.
-Modified the server to return the the Angular5 build output. The map can be viewed by accessing <main-application-address>/map
+Created an Angular5 application that allows the user to select a route to be displayed.    
+Modified the server to return the the Angular5 build output. The map can be viewed by accessing *main-application-address/map*
 
 ### Week 6
 
@@ -20,9 +20,9 @@ Added the functionality of displaying markers on the map through the Google Maps
 
 ### Week 4 & 5
 
-(BackEnd)Finished the node.js module responsible with scraping the RATT website, returning a json of the routes (inbound & outbound) with every station and the predicted arrival time. Possible enhancements could be done to standardize the time format (currently HH:MM or xmin or >>> signaling the bus being in the station).
+*@BackEnd* Finished the node.js module responsible with scraping the RATT website, returning a json of the routes (inbound & outbound) with every station and the predicted arrival time. Possible enhancements could be done to standardize the time format (currently HH:MM or xmin or >>> signaling the bus being in the station).
 
-(FrontEnd)A sidebar was added for selecting the routes to be displayed on the map. 
+*@FrontEnd* A sidebar was added for selecting the routes to be displayed on the map. 
 
 ### Week 3
 
