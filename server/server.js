@@ -11,6 +11,7 @@ const app = express();
  * Map folder for all static assets required by Angular
  */
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'mapper')));
 
 /**
  * Add response when the map is requested
