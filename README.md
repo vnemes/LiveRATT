@@ -3,57 +3,37 @@
 ## Project Requirements
 This Web Application aims at displaying a **live map** of all the Buses, Trolley Buses and Trams operated by the *Public Transport System of Timisoara*.
 Some of the features included will be:
-+ An *interactve map* of the city of Timisoara and the surrounding region
-+ An overview of all the vehicles and their location on the dynamic map
-+ The possibility of selecting a particular track in order to check its planned route, schedule and actual location
++ An *interactve map* of the city of Timisoara and the surrounding region (**Done** in release *v1.0*)
++ An overview of all the vehicles and their location on the dynamic map (*Work in progress*)
++ The possibility of selecting a particular track in order to check its planned route, schedule and actual location -> (**Done** in release *v1.0*)
 
 ## Current Progress
-### Week1
 
-So far, we were able to scrap the webpage that would provide is with the timings for each route (ScrappedExample.html) from [this link](http://86.122.170.105:61978/html/timpi/trasee.php?param1=1556). Format example:
-```html
-<table>
-  <tr>
-    <td align=center><b>Name of the Line and Direction</b></td>
-  </tr>
-</table><br><br>
-<table bgcolor=D8D8D8 border='0'>
-  <tr>
-    <td align=center width="200"><b>Stația</b></td>
-    <td align=center width="60"><b>Sosire</b></td>
-  </tr>
-</table>
-<table bgcolor=D8D8D8 border='0'>
-  <tr>
-    <td align=left width="200"><b>Bd. Dâmbovița</b></td>
-    <td align=center width="60"><b>12:10</b></td>
-  </tr>
-</table>
-<table bgcolor=D8D8D8 border='0'>
-  <tr>
-    <td align=left width="200"><b>Station name</b></td>
-    <td align=center width="60"><b>Time in format HH:MM or x min</b></td>
-  </tr>
-```
-The webpage seems to select the route to be displayed based on the PHP variable *param1* in the URL. We have yet to find any correlation between the Line Name and the *random* number passed through that variable(random value, hash, random index in DB - or ordered lexicographically by station name?). 
+### Week 7 & 8
 
-We might write a small script to iterate through all possible 4 digit numbers and retrieve the pairing of the Line Name and the number in order to start building the data structures necessary to our application.
+Created an Angular5 application that allows the user to select a route to be displayed.    
+Modified the server to return the the Angular5 build output. The map can be viewed by accessing *main-application-address/map*
 
-When an **invalid** number is passed through *param1*, the following webpage is returned:
-```html
-<table bgcolor=0048A1 style='color:white;' border='0'><tr>
-<td align=center><b>Linia NU CIRCULĂ AZI! spre </b></td></tr>
-</table><br><br><table bgcolor=D8D8D8 border='0'><tr>
-    <td align=center width="200"><b>Stația</b></td>
-    <td align=center width="60"><b>Sosire</b></td>
-</tr>
-</table><br><br><table bgcolor=0048A1 style='color:white;' border='0'><tr>
-<td align=center><b>Linia NU CIRCULĂ AZI! spre </b></td></tr>
-</table><br><br><table bgcolor=D8D8D8 border='0'><tr>
-    <td align=center width="200"><b>Stația</b></td>
-    <td align=center width="60"><b>Sosire
-</b></td>  
-```
+### Week 6
+
+Added the functionality of displaying markers on the map through the Google Maps API.
+
+### Week 4 & 5
+
+*@BackEnd* Finished the node.js module responsible with scraping the RATT website, returning a json of the routes (inbound & outbound) with every station and the predicted arrival time. Possible enhancements could be done to standardize the time format (currently HH:MM or xmin or >>> signaling the bus being in the station).
+
+*@FrontEnd* A sidebar was added for selecting the routes to be displayed on the map. 
+
+### Week 3
+
+Added a node.js server that responds with an html page on any connection attempt.<br />
+The page contains our current implementation of the Google Maps API.
+<details>
+  <summary>Current Map Progres</summary>
+   <p align="center">
+    <img src="https://i.imgur.com/0uyZc4Y.png" width="100%"/>  
+   </p>
+</details>
 
 ### Week 2
 
@@ -150,19 +130,49 @@ Using a small [python script](https://github.com/vnemes/LiveRATT/blob/master/scr
 | 1286   |  Tv9         | 
 </details> <br />
 
-### Week 3
+### Week1
 
-Added a node.js server that responds with an html page on any connection attempt.<br />
-The page contains our current implementation of the Google Maps API.
-<details>
-  <summary>Current Map Progres</summary>
-   <p align="center">
-    <img src="https://i.imgur.com/0uyZc4Y.png" width="100%"/>  
-   </p>
-</details>
+So far, we were able to scrap the webpage that would provide is with the timings for each route (ScrappedExample.html) from [this link](http://86.122.170.105:61978/html/timpi/trasee.php?param1=1556). Format example:
+```html
+<table>
+  <tr>
+    <td align=center><b>Name of the Line and Direction</b></td>
+  </tr>
+</table><br><br>
+<table bgcolor=D8D8D8 border='0'>
+  <tr>
+    <td align=center width="200"><b>Stația</b></td>
+    <td align=center width="60"><b>Sosire</b></td>
+  </tr>
+</table>
+<table bgcolor=D8D8D8 border='0'>
+  <tr>
+    <td align=left width="200"><b>Bd. Dâmbovița</b></td>
+    <td align=center width="60"><b>12:10</b></td>
+  </tr>
+</table>
+<table bgcolor=D8D8D8 border='0'>
+  <tr>
+    <td align=left width="200"><b>Station name</b></td>
+    <td align=center width="60"><b>Time in format HH:MM or x min</b></td>
+  </tr>
+```
+The webpage seems to select the route to be displayed based on the PHP variable *param1* in the URL. We have yet to find any correlation between the Line Name and the *random* number passed through that variable(random value, hash, random index in DB - or ordered lexicographically by station name?). 
 
-### Week 4 & 5
+We might write a small script to iterate through all possible 4 digit numbers and retrieve the pairing of the Line Name and the number in order to start building the data structures necessary to our application.
 
-(BackEnd)Finished the node.js module responsible with scraping the RATT website, returning a json of the routes (inbound & outbound) with every station and the predicted arrival time. Possible enhancements could be done to standardize the time format (currently HH:MM or xmin or >>> signaling the bus being in the station).
-
-(FrontEnd)A sidebar was added for selecting the routes to be displayed on the map. 
+When an **invalid** number is passed through *param1*, the following webpage is returned:
+```html
+<table bgcolor=0048A1 style='color:white;' border='0'><tr>
+<td align=center><b>Linia NU CIRCULĂ AZI! spre </b></td></tr>
+</table><br><br><table bgcolor=D8D8D8 border='0'><tr>
+    <td align=center width="200"><b>Stația</b></td>
+    <td align=center width="60"><b>Sosire</b></td>
+</tr>
+</table><br><br><table bgcolor=0048A1 style='color:white;' border='0'><tr>
+<td align=center><b>Linia NU CIRCULĂ AZI! spre </b></td></tr>
+</table><br><br><table bgcolor=D8D8D8 border='0'><tr>
+    <td align=center width="200"><b>Stația</b></td>
+    <td align=center width="60"><b>Sosire
+</b></td>  
+```
